@@ -1,0 +1,22 @@
+ <form method="POST" name="contactForm" class="form-contact comment_form" enctype="multipart/form-data">
+                                            {% csrf_token %}
+
+                                            <div class="row">
+                                                {% for field in form %}
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        {{field.label_tag}}<br>
+                                                        {{ field }}
+                                                        {% for error in field.errors %}
+                                                          <p style="color: red">{{ error }}</p>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                                <div class="col-lg-12 text-center">
+                                                    <button type="submit" class="btn btn-primary d-block px-2 py-3">Submit</button>
+                                                </div>
+                   
+                                                
+                                            </div>
+                                        </form>

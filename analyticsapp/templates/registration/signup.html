@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- bradcam_area_start -->
+        <div class="bradcam_area breadcam_bg overlay2">
+                <h3>Register</h3>
+            </div>
+            <!-- bradcam_area_end -->
+
+     <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div  id="login-box" class="col-md-12">
+                       <h2>Sign up</h2>
+                          <form  class="form-contact contact_form" method="POST" action="">
+                               {% csrf_token %}
+                               <div class="row">
+                               {% for field in form %}
+                               <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        {{field.label_tag}}<br>
+                                                        {{ field }}
+                                                        {% for error in field.errors %}
+                                                          <p style="color: red">{{ error }}</p>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                               {% endfor %}
+    
+                              <button class="btn btn-info btn-md" type="submit">Sign up</button>
+                            </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+{% endblock %}
+
+
