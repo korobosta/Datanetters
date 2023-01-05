@@ -1,0 +1,69 @@
+<html>
+<head>
+    <title>{% block title%}Datanetter | User Home{% endblock %}</title>
+  {% load static %}
+  
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user_style.css' %}">
+    
+</head>
+<body>
+  <div class="container">
+<!--     SIDE AREA -->
+    <div style="width:220px" class="sideArea">
+        <div class="avatar">
+            {% if details is None %}
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCNOdyoIXDDBztO_GC8MFLmG_p6lZ2lTDh1ZnxSDawl1TZY_Zw" alt="">
+            {% else %}
+            <img src="/{{details.image}}" alt="">
+            {% endif %}
+            
+            <div class="avatarName">Welcome,<br>{{request.user.first_name }}&nbsp{{request.user.last_name}}</div>
+        </div>
+        <ul class="sideMenu">
+            <li><a href="{% url 'home' %}"><span class="fa fa-home"></span>HOME</a></li>
+            <li><a href="javascript:void(0)" class="has-submenu"><span class="fa fa-address-book"></span>MY ACCOUNT</a>
+                <ul class="submenu">
+                    <li><a href="{% url 'profile' %}"><span class="fa fa-address-book"></span>PROFILE</a></li>
+                    
+                    <li><a href="{% url 'change_password' %}"><span class="fa fa-unlock-alt"></span>CHANGE PASSWORD</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'data_mining' %}"><span class="fa fa-database"></span>DATA MINING</a></li>
+            <li><a href="{% url 'machine_learning' %}"><span class="fa fa-leanpub"></span>MACHINE LEARNING</a></li>
+            <li><a href="{% url 'data_generation' %}"><span class="fa fa-table"></span>DATA GENERATION</a></li>
+            <li><a href="{% url 'database_storage' %}"><span class="fa fa-database"></span>DATABASE STORAGE</a></li>
+            <li><a href="{% url 'data_file_storage' %}"><span class="fa fa-file"></span>DATA FILE STORAGE</a></li>
+            <li><a href="/data-download"><span class="fa fa-table"></span>DATA DOWNLOAD</a></li>
+            <li><a href="{% url 'data_visualization' %}"><span class="fa fa-bar-chart"></span>DATA VISUALIZATION</a></li>
+
+        </ul>
+    </div>
+<!--     SIDE AREA -->
+    <div class="mainArea">
+        <!-- BEGIN NAV -->
+        <nav class="navTop row">
+            <div class="menuIcon fl"><span class="fa fa-bars"></span></div>
+            <div class="account fr">
+                <div class="name has-submenu">{{request.user}}<span class="fa fa-angle-down"></span></div>
+                <ul class="accountLinks submenu">
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'logout' %}">Log out<span class="fa fa-sign-out fr"></span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- END NAV -->
+        <!-- CONTAINER  -->
+
+        {% block content %}
+        {% endblock %}
+
+        
+   
+<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/user.js' %}"></script>
+
+  </body>
+  </html>

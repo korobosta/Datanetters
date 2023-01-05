@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+  <style>
+input{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+</style>
+<!-- bradcam_area_start -->
+ <div style="padding-bottom:20px;padding-top:100px" class="bradcam_area breadcam_bg overlay2"></div>
+ <!-- bradcam_area_end -->
+  <section class="contact-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="contact-title">Sign Up Form</h2>
+                    </div>
+                    <div class="col-lg-8">
+                        {% if messages %}
+                             <ul class="messages">
+                               {% for message in messages %}
+                                  <li style="color:green;font-weight:bold"  {% if message.tags %} class=" {{ message.tags }} " {% endif %}>{{ message }} </li>
+                               {% endfor %}
+                             </ul>
+                        {% endif %}
+                        <form method="POST" name="contactForm" class="form-contact contact_form">
+                                            {% csrf_token %}
+
+                                            <div class="row">
+                                                {% for field in form %}
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        {{field.label_tag}}<br>
+                                                        {{ field }}
+                                                        {% for error in field.errors %}
+                                                          <p style="color: red">{{ error }}</p>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                                <div class="col-lg-12 text-center">
+                                                    <button type="submit" class="btn btn-primary d-block px-2 py-3">SIGN UP</button>
+                                                </div>
+                   
+                                                
+                                            </div>
+                                        </form>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </section>  
+
+{% endblock %}
+
+

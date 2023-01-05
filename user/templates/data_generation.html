@@ -1,0 +1,79 @@
+{% extends 'user_base.html' %}
+{% block title %}User Profile{% endblock %}
+{% block content %}
+<div class="mainContent">  
+  <form  method="get" class="form"action="https://test.codenet.co.ke/data_generation" target="_blank">
+    {% csrf_token %}
+    <div class="formHeader row">
+        <h2 class="text-1 fl">Fill in the details to generate data</h2>
+        <div class="fr">
+            <button type="submit" class="btnSave bg-1 text-fff text-bold fr">GENERATE</button>
+        </div>
+    </div>
+    <div class="formBody row">
+        <div class="column s-6">
+            <div class="col-6">
+                           <div class="form-group">
+                              <label for="count"> Number of records(1 to 10000)</label><br>
+                              <input type="number" name="count" min="1" max="10000" required>
+                              
+                           </div>
+                        </div>
+                        <div class="col-6">
+                           <div class="form-group">
+                              <input type="checkbox" id="name" name="name" value="name">
+                              <label for="name"> Name</label><br>
+                           </div>
+                        </div>
+                        <div class="col-sm-6">
+                           <div class="form-group">
+                              <input type="checkbox"  id="date" name="date" value="date">
+                              <label for="date"> Date</label><br>
+                           </div>
+                        </div>
+                        <div class="col-sm-6">
+                           <div class="form-group">
+                              <input type="checkbox"  id="phone" name="phone" value="phone">
+                              <label for="photo"> Phone</label><br>
+                           </div>
+                        </div>
+                        <div class="col-6">
+                           <div class="form-group">
+                              <input type="checkbox" id="city" name="city" value="city">
+                              <label for="city">City</label><br>
+                           </div>
+                        </div>
+                        <div class="col-6">
+                           <div class="form-group">
+                              <input type="checkbox" id="country" name="country" value="country">
+                              <label for="country">Country</label><br>
+                           </div>
+                        </div>
+                        <div class="col-6">
+                           <div class="form-group">
+                              <input type="checkbox" id="email" name="email" value="email">
+                              <label for="email">Email</label><br>
+                           </div>
+                        </div>
+                     </div>
+                     
+           
+        </div>
+        
+        <!--
+            <label class="inputGroup">
+                <span>Image</span>
+                <input type="hidden" name="img" value="src">
+                <span>
+                    <input type="file" name="img" onchange="getImg(this)" multiple>
+                    <img src="http://bookstore.crunchpress.com/wp-content/uploads/2013/05/b2.jpg" alt="" width="50">
+                </span>
+                
+            </label>
+            -->
+        </div>
+
+    </form> 
+</div>
+
+{% endblock %}

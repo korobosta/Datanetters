@@ -1,0 +1,25 @@
+The progress:
+0. Landing Page(ipsbonline.com)
+1. User registration(ipsbonline.com/register.php)
+2. User Verify email
+3. User Login(ipsbonline.com/login.php)
+4. some Parts of user dashboard
+5. User download template
+6. Admin Login(ipsbonline.com/login.php)
+7. Admin add user
+8. Admin view all users
+Currently working on
+User upload template and save to database
+User view project
+
+credentials
+Admin username:admin@gmail.com
+Admin Password:12345
+
+User username:kevinkorobosta@gmail.com
+User pass: 1234
+
+malierasc
+~;B@NVz8N{T*
+sitegenco
+Site@1510

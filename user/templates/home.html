@@ -1,0 +1,102 @@
+{% extends 'user_base.html' %}
+{% block title %}User Home{% endblock %}
+{% block content %}
+
+<div class="mainContent"> 
+{% if messages %}
+                             <ul class="messages">
+                               {% for message in messages %}
+                                  <li style="color:green;font-weight:bold;text-align:center"  {% if message.tags %} class=" {{ message.tags }} " {% endif %}>{{ message }} </li>
+                               {% endfor %}
+                             </ul>
+                        {% endif %}
+{% if details is None %}
+<form action="" method="POST" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+    <div class="formHeader row">
+        <h2 class="text-1 fl">Add/Change Image/Phone</h2>
+        <div class="fr">
+            <button type="submit" class="btnSave bg-1 text-fff text-bold fr">SAVE</button>
+        </div>
+    </div>
+    {{ form.non_field_errors }}
+    {% if form.errors %}
+      {% for field in form %}
+
+           {% for error in field.errors %}
+                <b style="color:red">{{field.label}}: {{ error|escape }}</b>
+           {% endfor %}
+
+      {% endfor %}
+      
+{% endif %}
+    <div class="formBody row">
+        <input type="hidden" name="user" value={{request.user.id}}>
+        <div class="column s-6">
+            <label class="inputGroup">
+                <span>Phone</span>
+                <span>{{form.phone}}</span>
+                
+            </label>
+            
+        </div>
+        <div class="column s-6">
+            
+            <label class="inputGroup">
+                <span>Image</span>
+                <span>
+                    {{form.image}}
+                    <img src="{{details.image}}" alt="" width="50">
+                </span>
+                
+            </label>
+        </div>
+      
+    </div>
+</form>
+
+{% else %}
+ 
+{% endif %}
+<style>
+    .card{
+        float:left;
+        height:100px;
+        width:20%;
+        background-color:teal;
+        color:white;padding:20px;
+        margin:10px
+    }
+</style>
+
+    <div class="card">
+        <p>Data mining requests</p>
+        <p>{{dmc}}</p>
+        <a href="{% url 'data_mining' %}">View</a>
+        
+    </div>
+    <div class="card">
+        <p>Machine Learning Requests</p>
+        <p>{{mlc}}</p>
+        <a href="{% url 'machine_learning' %}">View</a>
+        
+    </div>
+    <div class="card">
+        <p>Data Visualization requests</p>
+        <p>{{dvc}}</p>
+        <a href="{% url 'data_visualization' %}">View</a>
+        
+    </div>
+    <div class="card">
+        <p>Files Stored</p>
+        <p>{{dsc}}</p>
+        <a href="{% url 'data_file_storage' %}">View</a>
+        
+    </div>
+    
+
+  
+    
+</div>
+
+{% endblock %}

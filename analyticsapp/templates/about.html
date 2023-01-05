@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title%}Datanetters | About Us {% endblock %}
+{% block content %}
+{% load static %}
+    <!-- bradcam_area_start -->
+    <div style="padding-bottom:20px;padding-top:100px" class="bradcam_area breadcam_bg overlay2">
+        <h3 >About Us</h3>
+    </div>
+    <!-- bradcam_area_end -->
+    <div style="padding-top:20px" class="about_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <h3 class="about_title text-center">
+                        We made your Data needs <br>
+                        More Easier
+                    </h3>
+                </div>
+            </div>
+            <div class="row mb-60">
+                <div class="col-xl-6">
+                    <p>Datanetters is a company that provides data solutions. We provide services like<b> data mining, machine learning, data analytics, data storage</b> and <b>data vizualizations</b></p>
+                </div>
+                <div class="col-xl-6">
+                    <p> We have professional team who provide quality services to clients. Our services are affordable and mostly online </p>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div style="padding-top:10px" class="about_boxes">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_box">
+                        <h3>10</h3>
+                        <p>Clients</p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_box">
+                        <h3>5</h3>
+                        <p>Dedicated team members</p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_box">
+                        <h3>8</h3>
+                        <p>Quality Services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- have_question_statr -->
+    <div style="padding-top:10px" class="have_question">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-10 offset-xl-1">
+                        <div class="single_border">
+                            <div class="row align-items-center">
+                                <div class="col-xl-6 col-md-4 col-lg-6">
+                                    <h3>Have any Question?</h3>
+                                </div>
+                                <div class="col-xl-6 col-md-8 col-lg-6">
+                                    <div class="chat">
+                                        <a class="boxed_btn_green" href="{% url 'contact' %}">
+                                            <i class="flaticon-chat"></i>
+                                            <span>Contact us</span>
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- have_question_end -->
+{% endblock %}

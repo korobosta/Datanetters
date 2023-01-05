@@ -1,0 +1,119 @@
+{% extends 'user_base.html' %}
+{% block title %}User Data Mining{% endblock %}
+{% block content %}
+<div class="mainContent">  
+  <form  method="POST" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="formHeader row">
+        <h2 class="text-1 fl">Make a data mining request</h2>
+        
+        <div class="fr">
+            <button type="submit" class="btnSave bg-1 text-fff text-bold fr">SUBMIT</button>
+        </div>
+    </div>
+    {% if messages %}
+                             <ul class="messages">
+                               {% for message in messages %}
+                                  <li style="color:green;font-weight:bold;text-align:center"  {% if message.tags %} class=" {{ message.tags }} " {% endif %}>{{ message }} </li>
+                               {% endfor %}
+                             </ul>
+                        {% endif %}
+        {{ form.non_field_errors }}
+    <div class="formBody row">
+        <div class="column s-6">
+          {{ form.data_to_mine.errors }}
+            <label class="inputGroup">
+                <span>Data to Mine</span>
+                <span>{{ form.data_to_mine }}</span>
+            </label>
+            {{ form.name.errors }}
+            <label style="display:none" class="inputGroup">
+                <span>Name</span>
+                <span>{{ form.name }}</span>
+            </label>
+            {{ form.email.errors }}
+            <label style="display:none" class="inputGroup">
+                <span>Email</span>
+                <span>{{ form.email }}</span>
+            </label>
+            {{ form.phone.errors }}
+            <label class="inputGroup">
+                <span>Phone</span>
+                <span>{{ form.phone }}</span>
+            </label>
+            <label class="inputGroup">
+                <span>Description</span>
+                <span>{{ form.description }}</span>
+            </label>
+            
+            <button type="submit" class="btnSave bg-1 text-fff text-bold fr">SUBMIT</button>
+        </div>
+        <!--
+            <label class="inputGroup">
+                <span>Image</span>
+                <input type="hidden" name="img" value="src">
+                <span>
+                    <input type="file" name="img" onchange="getImg(this)" multiple>
+                    <img src="http://bookstore.crunchpress.com/wp-content/uploads/2013/05/b2.jpg" alt="" width="50">
+                </span>
+                
+            </label>
+            -->
+        </div>
+
+    </form> 
+    <style>
+        #table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#table td, #table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table tr:nth-child(even){background-color: #f2f2f2;}
+
+#table tr:hover {background-color: #ddd;}
+
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+    </style>
+    <table id="table" >  
+    <thead class="thead-dark">  
+    <tr>  
+        <th>S/N</th>  
+        <th>File Name</th>
+        <th>Description</th>  
+        <th>Status</th>  
+        <th>Actions</th>  
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for m in mine %}  
+    <tr>  
+        <td>{{forloop.counter}}</td>  
+        <td>{{ m.data_to_mine }}</td>  
+        <td>{{ m.description }}</td>  
+        <td>Being Processed</td>  
+        <td> 
+        <div class="cell cell-100 text-center">
+                    <!--<a href="/edit/{{ m.id }}" class="btnEdit fa fa-pencil bg-1 text-fff"></a>--><a href="delete-data-mining-request/{{ m.id }}" class="btnRemove fa fa-remove bg-1 text-fff" onclick='return confirm("Do you really want to remove it ?")'></a>
+                </div>
+             
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+</div>
+{% endblock %}
+
+

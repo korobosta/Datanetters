@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block title%}Datanetters | Home {% endblock %}
+{% block content %}
+{% load static %}
+<!-- slider_area_start -->
+    <div class="slider_area">
+        <div style="height:100px;" class="single_slider d-flex align-items-center justify-content-center slider_bg_1 overlay2">
+            <!--
+            <div  class="container">
+                <div  class="row align-items-center justify-content-center">
+                    <div class="col-xl-9">
+                        <div class="slider_text text-center">
+                            <p>We provide the following data solutions:</p>
+                            <h4 style="color:white">Data mining, data storage,data analytics,data visualization, machine learning, data generation, data download</h4>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+    <!-- slider_area_end -->
+
+    <!-- prising_area_start -->
+    <div style="padding-top:20px" class="prising_area">
+        <div   class="container">
+            <div class="row">
+                <div  class="col-xl-12">
+                    <div class="section_title text-center mb-100">
+                        <h3>
+                            Our Services
+                        </h3>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon blue">
+                            <i class="flaticon-servers-1"></i>
+                        </div>
+                        <h3>Data Collection</h3>
+                        <p class="prising_text">Data collection is the process of getting data from different sources</p>
+                        <a href="/data-collection" class="boxed_btn_green2">Visit Page</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon blue">
+                            <i class="flaticon-servers"></i>
+                        </div>
+                        <h3>Machine Learning</h3>
+                        <p class="prising_text">Machine learning allows us to teach computers how to program themselves so that we don’t have to write explicit instructions for certain tasks.</p>
+                        <a href="/machine-learning" class="boxed_btn_green2">Visit Page</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon lite_blue">
+                            <i class="flaticon-hosting"></i>
+                        </div>
+                        <h3>Data Mining</h3>
+                        <p class="prising_text">Data mining is the process of exploring data in order to extract important information</p>
+                        <a href="/data-mining" class="boxed_btn_green2">Visit Page</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon pink">
+                            <i class="flaticon-wordpress"></i>
+                        </div>
+                        <h3>Data Visualization</h3>
+                        <p class="prising_text">Data visualization is the act of communicating data or results through some sort of picture or chart.</p>
+                        <a href="/data-visualization" class="boxed_btn_green2">Visit Page</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon yellow">
+                            <i class="flaticon-servers-1"></i>
+                        </div>
+                        <h3>Data Generation</h3>
+                        <p class="prising_text">We programaticaaly generate for you data based on the columns you specify</p>
+                        
+                        <a href="/data-generation" class="boxed_btn_green2">Visit Page</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon yellow">
+                            <i class="flaticon-servers-1"></i>
+                        </div>
+                        <h3>Data File Storage</h3>
+                        <p class="prising_text">We store for you your data files so that you can access them whenever you want</p>
+                        
+                        <a href="{% url 'data_file_storage' %}" class="boxed_btn_green2">Visit Page</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon yellow">
+                            <i class="flaticon-servers-1"></i>
+                        </div>
+                        <h3>Database Storage</h3>
+                        <p class="prising_text">We store table data for your applications. You can forget about creating databases and focus on core business activities. </p>
+                        
+                        <a href="{% url 'database_storage' %}" class="boxed_btn_green2">Visit Page</a>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_prising">
+                        <div class="prising_icon yellow">
+                            <i class="flaticon-servers-1"></i>
+                        </div>
+                        <h3>Data Download</h3>
+                        <p class="prising_text">We have a variety of data that you can download and use it for any purpose</p>
+                        
+                        <a href="/data-download" class="boxed_btn_green2">Visit Page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- prising_area_end -->
+
+
+{% endblock %}
+
+    
+
+   
