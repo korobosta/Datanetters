@@ -16,6 +16,6 @@ urlpatterns = [
     path('database-storage', views.database_storage, name='database_storage'),
     path('data-file-storage', views.data_file_storage, name='data_file_storage'),
     path('data-visualization', views.data_visualization, name='data_visualization'),
-    path('data-collection', views.data_collection, name='data_collection'),
+    path('data-acquisition', views.data_acquisition, name='data_acquisition'),
 
 ]

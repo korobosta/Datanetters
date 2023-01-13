@@ -81,14 +81,14 @@ def machine_learning(request):
 		form = ContactForm()
 		return render(request, './data/machine_learning.html', {'form': form})
 
-def data_collection(request):
+def data_acquisition(request):
 	form = ContactForm(request.POST or None)
 	if request.method == 'POST':
 		if form.is_valid():
 			form.save()
 			messages.success(request, 'We have received your machine learing request, we will get back to you soon')
 			return redirect('/machine-learning')
-	return render(request, './data/data_collection.html', {'form': form})
+	return render(request, './data/data_acquisition.html', {'form': form})
 
 def data_mining(request):
 	if request.method == 'POST':

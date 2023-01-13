@@ -39,7 +39,7 @@
                </div>
                
                <div class="comment-form">
-                  <h4>Make a Machine Learning Project Request</h4>
+                  <h4>Acquire Data</h4>
                   <form method="POST" name="contactForm" class="form-contact comment_form">
                     {% csrf_token %}
 
@@ -59,11 +59,88 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-12 text-center">
-                            <button type="submit" class="btn btn-primary d-block px-2 py-3">SEND REQUEST</button>
+                        
+                        <div class="col-6 db" style="display:none">
+                           <div class="form-group">
+                              <label>DB Host</label><br>
+                              <input type="text" name="db_host" class="form-control">
+                           </div>
                         </div>
 
+                        <div class="col-6 db" style="display:none">
+                           <div class="form-group">
+                              <label>DB User</label><br>
+                              <input type="text" name="db_huser" class="form-control">
+                           </div>
+                        </div>
+
+                        <div class="col-6 db" style="display:none">
+                           <div class="form-group">
+                              <label>DB Password</label><br>
+                              <input type="password" name="db_hpassword" class="form-control">
+                           </div>
+                        </div>
+
+                        <div class="col-6 db" style="display:none">
+                           <div class="form-group">
+                              <label>DB Name</label><br>
+                              <input type="text" name="db_name" class="form-control">
+                           </div>
+                        </div>
+
+                        <div class="col-lg-12 db" style="display:none">
+                           <div class="form-group">
+                              <button type="submit" class="btn btn-primary ">Connect & Get Tables</button>
+                           </div>
+                        </div>
+
+                        <div class="col-6 db" style="display:none">
+                           <div class="form-group">
+                              <label>Table</label><br>
+                              <select id="db_table" name="db_table" class="form-control">
+                                 <option value="">Select Table</option>
+                              </select>
+                           </div>
+                        </div>
+
+                        <div class="col-12 db" style="display:none">
+                           <div class="form-group">
+                              <label>SQL Query</label><br>
+                              <textarea name="sql_query" class="form-control">
+
+                              </textarea>
+                           </div>
+                        </div>
                         
+                        <div id="upload_div" class="col-6" style="display:none">
+                           <div class="form-group">
+                               <label>Upload</label><br>
+                               <select id="upload_type" name="upload_type" class="form-control">
+                                  <option value="">Select Upload Type</option>
+                                  <option value="1">Local File</option>
+                                  <option value="2">Online Link</option>
+                               </select>
+                           </div>
+                       </div>
+                       
+                       <div id="file_div" class="col-6 none-db" style="display:none">
+                           <div class="form-group">
+                              <label>File</label><br>
+                              <input type="file" name="file" class="form-control">
+                           </div>
+                       </div>
+
+                       <div id="link_div" class="col-6 none-db" style="display:none">
+                           <div class="form-group">
+                              <label>Link</label><br>
+                              <input type="text" name="link" class="form-control">
+                           </div>
+                       </div>
+
+                    </div>
+                        <div class="col-lg-12 text-center">
+                            <button type="submit" class="btn btn-primary ">SEND REQUEST</button>
+                        </div>
                     </div>
                   </form>
                </div>
@@ -154,11 +231,45 @@
 {% block js %}
 <script>
    $(document).ready(function(){
+
       $("#source").change(function(){
          var source = $("#source").val();
-         if(value != ''){
+         if(source != ''){
+            if(source == '1' || source == '2' || source == '3' || source == '4' || source == '5' ){
+               $('#upload_div').show();
+               $('.db').hide();
+            }
+            else if(source == '6'){
+               $('#upload_div').hide();
+               $('.db').show();
+               $('.none-db').hide();
+            }
+         }
+         else{
+            $('#upload_div').hide();
+            $('.db').hide();
+            $('.none-db').hide();
          }
       });
+
+      $("#upload_type").change(function(){
+         var upload_type = $("#upload_type").val();
+         if(upload_type != ''){
+            if(upload_type == '1'){
+               $('#link_div').hide();
+               $('#file_div').show();
+            }
+            else if(upload_type == '2'){
+               $('#file_div').hide();
+               $('#link_div').show();
+            }
+         }
+         else{
+            $('#link_div').hide();
+            $('#file_div').hide();
+         }
+      });
+
    });
 </script>
 {% endblock %}
