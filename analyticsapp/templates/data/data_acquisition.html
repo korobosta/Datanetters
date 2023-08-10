@@ -17,13 +17,6 @@
                   <div class="feature-img">
                      <img class="img-fluid" src="img/blog/single_blog_1.png" alt="">
                   </div>
-                  {% if messages %}
-                       <ul class="messages">
-                         {% for message in messages %}
-                            <li style="color:green;font-weight:bold">  {% if message.tags %} class=" {{ message.tags }} " {% endif %}>{{ message }} </li>
-                         {% endfor %}
-                       </ul>
-                  {% endif %}
                   <div class="blog_details">
                      <h2>Data Collection
                      </h2>
@@ -40,8 +33,16 @@
                
                <div class="comment-form">
                   <h4>Acquire Data</h4>
-                  <form method="POST" name="contactForm" class="form-contact comment_form">
+                  <form method="POST" name="contactForm" enctype="multipart/form-data" class="form-contact comment_form" action="{% url 'process_upload' %}">
                     {% csrf_token %}
+
+                     {% if messages %}
+                        <ul class="messages">
+                           {% for message in messages %}
+                              <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}>{{ message }} </li>
+                           {% endfor %}
+                        </ul>
+                     {% endif %}
 
                      <div class="row">
                         <div class="col-6">
@@ -49,12 +50,11 @@
                                 <label>Data Source</label><br>
                                 <select id="source" name="source" class="form-control">
                                    <option value="">Select Data Source</option>
-                                   <option value="1">CSV</option>
-                                   <option value="2">Excel</option>
-                                   <option value="3">SQL</option>
-                                   <option value="4">JSON</option>
-                                   <option value="5">Pickle</option>
-                                   <option value="6">Database</option>
+                                   <option value="csv">CSV</option>
+                                   <option value="excel">Excel</option>
+                                   <option value="sql">SQL</option>
+                                   <option value="json">JSON</option>
+                                   <option value="database">Database</option>
                                 </select>
                             </div>
                         </div>
@@ -117,8 +117,8 @@
                                <label>Upload</label><br>
                                <select id="upload_type" name="upload_type" class="form-control">
                                   <option value="">Select Upload Type</option>
-                                  <option value="1">Local File</option>
-                                  <option value="2">Online Link</option>
+                                  <option value="local">Local File</option>
+                                  <option value="online">Online Link</option>
                                </select>
                            </div>
                        </div>
@@ -235,11 +235,11 @@
       $("#source").change(function(){
          var source = $("#source").val();
          if(source != ''){
-            if(source == '1' || source == '2' || source == '3' || source == '4' || source == '5' ){
+            if(source == 'csv' || source == 'excel' || source == 'json' || source == 'sql'){
                $('#upload_div').show();
                $('.db').hide();
             }
-            else if(source == '6'){
+            else if(source == 'database'){
                $('#upload_div').hide();
                $('.db').show();
                $('.none-db').hide();
@@ -255,11 +255,11 @@
       $("#upload_type").change(function(){
          var upload_type = $("#upload_type").val();
          if(upload_type != ''){
-            if(upload_type == '1'){
+            if(upload_type == 'local'){
                $('#link_div').hide();
                $('#file_div').show();
             }
-            else if(upload_type == '2'){
+            else if(upload_type == 'online'){
                $('#file_div').hide();
                $('#link_div').show();
             }

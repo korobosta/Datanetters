@@ -25,7 +25,7 @@ SECRET_KEY = '#c6mp=&6(#tym0zmx=m%33uzoma-mu7+luuj$9v2vub8t&$_l9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','192.168.202.146']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'analyticsapp',
     'user',
     'phone_field',
+    'dataupload'
     
 ]
 
@@ -82,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'analytics',
         'USER': 'postgres',
-        'PASSWORD': 'Koros@2020',
+        'PASSWORD': 'Omwana@2030',
         'HOST': 'localhost',
         'PORT': '5432',
     }

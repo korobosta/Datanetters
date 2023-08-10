@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('analyticsapp.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('home/', include('user.urls')),
+    path('data-upload/', include('dataupload.urls')),
     
 ]
 

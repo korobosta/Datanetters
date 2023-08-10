@@ -1,13 +1,12 @@
 from django.urls import path
 from django.contrib import admin
-from django.conf.urls import url
 from analyticsapp import views
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('about', views.about, name="about"),
     path('contact', views.contact, name="contact"),
-    url(r'^signup/$', views.signup, name='signup'),
+    path(r'^signup/$', views.signup, name='signup'),
     path('login', views.login, name='login'),
     path('machine-learning', views.machine_learning, name='machine_learning'),
     path('data-mining', views.data_mining, name='data_mining'),
