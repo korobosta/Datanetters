@@ -12,6 +12,7 @@ def upload_data(request):
     db_table  = request.POST.get('db_table')
     sql_query  = request.POST.get('sql_query')
     upload_type  = request.POST.get('upload_type')
+    csv_data = []
     link  = request.POST.get('link')
     file = request.FILES['file']
     if file_type == 'csv':
@@ -31,8 +32,11 @@ def upload_data(request):
     else:
         messages.error(request, 'Invalid file type')
         return render(request, 'data/data_acquisition.html')
-    messages.success(request,str(column_headers))
-    return render(request, 'data/data_acquisition.html',{'columns':column_headers})
+    # if csv_data:
+    #     for data in csv_data.to_dict(orient="records"):
+
+
+    return render(request, 'data/view_data.html',{'columns':column_headers,'csv_data':csv_data.to_dict(orient="records")})
     
 
 

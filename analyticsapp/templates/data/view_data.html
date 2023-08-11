@@ -1,0 +1,60 @@
+{% extends '../base.html' %}
+{% block title%}Datanetters | Data Download {% endblock %}
+{% block content %}
+{% load static %}
+ <!-- bradcam_area_start -->
+     <div style="padding-bottom:20px;padding-top:100px" class="bradcam_area breadcam_bg overlay2">
+         <h3>Data View</h3>
+     </div>
+     <!-- bradcam_area_end -->
+
+   <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="blog_left_sidebar">
+                        <article class="blog_item">
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="single-blog.html">
+                                    <h2>Data</h2>
+                                </a>
+                                <p>Your data</p>
+                                
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            {% for record in columns %}
+                                            <th>{{record}}</th>
+                                            {% endfor %}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for data in csv_data %}
+                                        <tr>
+                                            {% for key, value in data.items %}
+                                            <td>{{value}}</td>
+                                            {% endfor %}
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            {% for record in columns %}
+                                            <th>{{record}}</th>
+                                            {% endfor %}
+                                        </tr>
+                                    </tfoot>
+
+                                </table>
+                                
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    <!--================Blog Area =================-->
+
+   {% endblock %}
