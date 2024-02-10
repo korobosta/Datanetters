@@ -13,6 +13,8 @@ def upload_data(request):
     sql_query  = request.POST.get('sql_query')
     upload_type  = request.POST.get('upload_type')
     csv_data = []
+    excel_data = []
+    column_headers = []
     link  = request.POST.get('link')
     file = request.FILES['file']
     if file_type == 'csv':
@@ -27,6 +29,20 @@ def upload_data(request):
             column_headers = list(csv_data.columns)
         except Exception as e:
             messages.error(request, 'Error occured while reading csv...')
+            print (e)
+            return render(request, 'data/data_acquisition.html')
+    elif file_type == 'excel':
+        try:
+            if upload_type == "local":
+                csv_data = pd.read_excel(file)
+            elif(upload_type == 'online'):
+                csv_data = pd.read_excel(link)
+            else:
+                messages.error(request, 'Invalid upload type')
+                return render(request, 'data/data_acquisition.html')
+            column_headers = list(csv_data.columns)
+        except Exception as e:
+            messages.error(request, 'Error occured while reading excel...')
             print (e)
             return render(request, 'data/data_acquisition.html')
     else:
